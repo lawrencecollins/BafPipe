@@ -22,5 +22,5 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     setup_requires=['wheel'],
-    install_requires=['unidec']
+    install_requires=['unidec', 'seaborn']
 )

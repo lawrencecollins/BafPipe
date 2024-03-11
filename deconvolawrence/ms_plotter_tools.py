@@ -311,7 +311,7 @@ def plot_data(df, x, y, type = "scatter",marker='x', hue='Label', palette = None
     if on is not None and on_column is not None:
         df1 = df[df[on_column].isin(on)]
     else:
-
+        pass
     fig, ax = plt.subplots()
     if type =="scatter":
         sns.scatterplot(df1, x=x, y=y, marker=marker, hue=hue, palette=palette,ax=ax,)

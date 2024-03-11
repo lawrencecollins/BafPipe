@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="deconvolawrence",
-    version="0.1",
+    version="0.2",
     author="Lawrence Collins",
     author_email="cm19ljc@leeds.ac.uk",
     description="Automated deconvolution of mass spectra datasets",

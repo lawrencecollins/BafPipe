@@ -7,7 +7,7 @@ setuptools.setup(
     name="deconvolawrence",
     version="0.1",
     author="Lawrence Collins",
-    author_email="cm19ljc@leeds.ac.uk lawrencejordancollins@gmail.com",
+    author_email="cm19ljc@leeds.ac.uk, lawrencejordancollins@gmail.com",
     description="Automated deconvolution of mass spectra datasets",
     long_description=long_description,
     long_description_content_type="text/markdown",

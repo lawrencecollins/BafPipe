@@ -465,8 +465,6 @@ class Meta2():
 
         if self.vars:
             try:
-                results_df.columns = results_df.columns.droplevel(0)
-                results_df.reset_index(inplace=True)
                 results_df = df_partial_str_merge(results_df,self.var_ids,'Name')
             except Exception as e:
                 print("check vars", e)
@@ -476,7 +474,14 @@ class Meta2():
         results2 = pd.pivot(results_df, index='Name', columns='Label', values = ['Height', 'Percentage_Labelling']).fillna(0)
         results2.reset_index(inplace=True)
 
-
+        if self.vars:
+            try:
+                results2.columns = results2.columns.droplevel(0)
+                results2.reset_index(inplace=True, drop=True)
+                results2.rename(columns = {"" : "Name"}, inplace = True)
+                results2 = df_partial_str_merge(results2,self.var_ids,'Name')
+            except Exception as e:
+                print("check vars", e)
 
         if name is None:
             name = os.path.split(self.directory)[1]+"_results.xlsx"

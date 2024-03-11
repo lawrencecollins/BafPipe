@@ -6,6 +6,7 @@ from scipy.signal import find_peaks
 import matplotlib.transforms as mtransforms
 import matplotlib
 import re
+import seaborn as sns
 
 matplotlib.rcParams['font.family'] = 'serif'
 matplotlib.rcParams['pdf.fonttype'] = 42
@@ -225,3 +226,79 @@ def file_to_df(path):
         print('Extension Not Recognized', extension)
         df = None
     return df
+
+def plot3d(x, y, z, df,on,on_column='Label',c=None, cmaps=['PiYG',"Reds","Greens", "Oranges"],
+           markers = ["o", "x", "p", "*", "s"]):
+
+    if type(on)!=list:
+        on = [on]
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d', )
+
+    for i, v in enumerate(on):
+
+        df1 = df[df[on_column]==v]
+        if c is not None:
+            scatter = ax.scatter(df1[x], df1[y], df1[z], c=df1[c], cmap=cmaps[i], marker=markers[i],s=df1[c]*10, edgecolor='black')
+            if i==0:
+                cbar = plt.colorbar(scatter,pad=0.1,fraction=0.02)
+                cbar.set_label(c)
+        else:
+            scatter = ax.scatter(df1[x], df1[y], df1[z], marker=markers[i], edgecolor='black')
+
+    # ax.set_proj_type('persp', focal_length=0.2)
+    ax.set_xlabel(x)
+    ax.set_ylabel(y)
+    ax.set_zlabel(z)
+
+    if c is not None and i==0:
+        cbar = plt.colorbar(scatter,pad=0.1,fraction=0.02)
+        cbar.set_label(c)
+
+    ax.grid(True)
+    ax.tick_params(labelsize=8)
+    plt.tight_layout()
+
+    plt.show()
+
+def plot_data(df, x, y, type = "scatter",marker='x', hue='Label', palette = None,on=None,
+              on_column=None,
+              ylabel="% Labelled", col=None, row=None,xlabel = "Time /hrs",*args, **kwargs):
+
+    if on is None and on_column is None:
+        df1 = df[df[on_column].isin(on)]
+    else:
+        df1=df
+    fig, ax = plt.subplots()
+    if type =="scatter":
+        sns.scatterplot(df1, x=x, y=y, marker=marker, hue=hue, palette=palette,ax=ax,)
+
+    elif type=="bar":
+        sns.barplot(df1, x=x, y=y, hue=hue, palette=palette, *args, **kwargs)
+
+    ax.set_ylim(0, 100)
+    ax.set_ylabel(ylabel)
+    ax.set_xlabel(xlabel)
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.legend(loc = 'right',bbox_to_anchor=(1.4, 0.8))
+
+
+    plt.show()
+
+
+def plot_rel(df, x, y, kind="scatter", hue="Label", palette=None,
+             ylabel="% Labelled", col=None, xlabel="Time /hrs", *args, **kwargs):
+
+    p1=sns.relplot(eng.results1, x='Label', y='Percentage_Labelling', hue='Label',palette=eng.colors_dict,legend="full")
+    ax = p1.axes[0,0]
+
+    ax.set_ylim(0, 100)
+    ax.set_ylabel("% Labelling")
+
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.set_xlabel("Time /hrs", )
+
+    plt.show()

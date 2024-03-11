@@ -163,6 +163,48 @@ def plot_spectra_separate(spectra, attr = 'massdat', xlabel = 'Mass [Da]',
             export_figure(fig, s.name+"_"+attr+window_name, directory, fmt=fmt)
         plt.close(fig)
 
+def plot_spectra_combined2(spectra, attr = 'massdat', title = "", show_titles = True,
+                          cmap='viridis', show_peaks = True,window = [None, None],
+                          xlabel="Mass [Da]", show_all_peaks=False,label_peaks=True,
+                          legend=True,export=True,directory="",fmt='svg',figsize=(7,5),
+                          findpeaks=False):
+    fig, axs = plt.subplots(len(spectra), 1, sharex = True, dpi = 120, sharey=False,
+                       constrained_layout=True, figsize=figsize
+                       )
+
+    if type(axs)!= np.ndarray:
+        axs = [axs]
+
+    for i,s in enumerate(spectra):
+        x, y = getattr(s, attr)[:, 0], getattr(s, attr)[:, 1]
+
+
+        axs[i].spines['right'].set_visible(False)
+        axs[i].spines['top'].set_visible(False)
+        axs[i].spines['left'].set_visible(False)
+        left, right = window[0], window[1]
+        if window[0] is None:
+            left = x.min()
+
+        if window[1] is None:
+            right=x.max()
+        axs[i].set_xlim(left=left, right=right)
+        axs[i].plot(x,y,c='black',lw=0.7)
+        axs[i].grid(False)
+        axs[i].yaxis.set_tick_params(labelleft=False)
+        axs[i].set_yticks([])
+
+    fig.supxlabel(xlabel, weight = 'bold', color = 'black')
+
+    if findpeaks:
+        pass
+    if export:
+        if title == "":
+            title = os.path.split(directory)[-1]
+        export_figure(fig,title , directory, fmt=fmt)
+    plt.show()
+
+
 
 
 def plot_spectra_combined(spectra, attr = 'massdat', title = "", show_titles = True,
@@ -265,11 +307,11 @@ def plot3d(x, y, z, df,on,on_column='Label',c=None, cmaps=['PiYG',"Reds","Greens
 def plot_data(df, x, y, type = "scatter",marker='x', hue='Label', palette = None,on=None,
               on_column=None,
               ylabel="% Labelled", col=None, row=None,xlabel = "Time /hrs",*args, **kwargs):
-
-    if on is None and on_column is None:
+    df1=df
+    if on is not None and on_column is not None:
         df1 = df[df[on_column].isin(on)]
     else:
-        df1=df
+
     fig, ax = plt.subplots()
     if type =="scatter":
         sns.scatterplot(df1, x=x, y=y, marker=marker, hue=hue, palette=palette,ax=ax,)

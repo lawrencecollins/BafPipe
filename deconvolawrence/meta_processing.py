@@ -1,4 +1,4 @@
-from baf2sql2unidec import *
+from deconvolawrence.baf2sql2unidec import *
 import matplotlib.pyplot as plt
 import os
 import unidec
@@ -7,7 +7,7 @@ from unidec import tools as ud
 import pandas as pd
 import zipfile
 
-import ms_plotter_tools as msp
+from deconvolawrence import ms_plotter_tools as msp
 
 # match expected masses
 def match(pks, masslist, names, tolerance):
@@ -465,6 +465,8 @@ class Meta2():
 
         if self.vars:
             try:
+                results_df.columns = results_df.columns.droplevel(0)
+                results_df.reset_index(inplace=True)
                 results_df = df_partial_str_merge(results_df,self.var_ids,'Name')
             except Exception as e:
                 print("check vars", e)

@@ -5,6 +5,7 @@
 
 import sys
 import numpy as np
+import os
 from ctypes import *
 
 dll = cdll.LoadLibrary(r"C:\Users\cm19ljc\Desktop\proj_folder\baf2sql_c.dll")

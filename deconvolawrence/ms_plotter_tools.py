@@ -194,7 +194,7 @@ def plot_spectra_combined2(spectra, attr = 'massdat', title = "", show_titles = 
         axs[i].yaxis.set_tick_params(labelleft=False)
         axs[i].set_yticks([])
         if show_titles:
-            axs.set_title(s.name, alpha = alpha, backgroundcolor = 'white')
+            axs[i].set_title(s.name, alpha = alpha, backgroundcolor = 'white')
 
     fig.supxlabel(xlabel, weight = 'bold', color = 'black')
 

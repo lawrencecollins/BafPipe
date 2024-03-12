@@ -23,7 +23,7 @@ setuptools.setup(
     python_requires='>=3.6',
     setup_requires=['wheel'],
     install_requires=['unidec', 'seaborn'],
-    packages=['deconvolawrence']
+    packages=['deconvolawrence'],
     include_package_data=True,
 
 )

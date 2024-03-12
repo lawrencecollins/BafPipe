@@ -22,5 +22,7 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     setup_requires=['wheel'],
-    install_requires=['unidec', 'seaborn']
+    install_requires=['unidec', 'seaborn'],
+    include_package_data=True,
+    package_data={"baf2sql_c":["baf2sql_c.dll"]}
 )

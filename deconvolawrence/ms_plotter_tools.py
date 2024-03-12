@@ -167,7 +167,7 @@ def plot_spectra_combined2(spectra, attr = 'massdat', title = "", show_titles = 
                           cmap='viridis', show_peaks = True,window = [None, None],
                           xlabel="Mass [Da]", show_all_peaks=False,label_peaks=True,
                           legend=True,export=True,directory="",fmt='svg',figsize=(7,5),
-                          findpeaks=False):
+                          findpeaks=False,alpha=0.4):
     fig, axs = plt.subplots(len(spectra), 1, sharex = True, dpi = 120, sharey=False,
                        constrained_layout=True, figsize=figsize
                        )
@@ -193,6 +193,8 @@ def plot_spectra_combined2(spectra, attr = 'massdat', title = "", show_titles = 
         axs[i].grid(False)
         axs[i].yaxis.set_tick_params(labelleft=False)
         axs[i].set_yticks([])
+        if show_titles:
+            axs.set_title(s.name, alpha = alpha, backgroundcolor = 'white')
 
     fig.supxlabel(xlabel, weight = 'bold', color = 'black')
 

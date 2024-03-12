@@ -14,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/lawrencecollins/deconvolawrence",
-    packages=setuptools.find_packages(),
+    packages=[setuptools.find_packages(),"deconvolawrence"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -23,7 +23,7 @@ setuptools.setup(
     python_requires='>=3.6',
     setup_requires=['wheel'],
     install_requires=['unidec', 'seaborn'],
-    packages=['deconvolawrence'],
+
     include_package_data=True,
 
 )

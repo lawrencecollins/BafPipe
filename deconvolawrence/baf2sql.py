@@ -7,7 +7,12 @@ import sys
 import numpy as np
 from ctypes import *
 
-dll = cdll.LoadLibrary(r"C:\Users\cm19ljc\Desktop\proj_folder\baf2sql_c.dll")
+dir = os.path.dirname(sys.modules["baf2sql_c"].__file__)
+path = os.path.join(dir, "baf2sql_c.dll")
+
+
+
+dll = cdll.LoadLibrary(path)
 dll.baf2sql_get_sqlite_cache_filename_v2.argtypes = [ c_char_p, c_uint32, c_char_p, c_int ]
 dll.baf2sql_get_sqlite_cache_filename_v2.restype = c_uint32
 dll.baf2sql_array_open_storage.argtypes = [ c_int, c_char_p ]

@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="deconvolawrence",
 
-    version="0.2.9.2",
+    version="0.2.9.3",
 
     author="Lawrence Collins",
     author_email="cm19ljc@leeds.ac.uk",
@@ -22,5 +22,7 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     setup_requires=['wheel'],
-    install_requires=['unidec', 'seaborn']
+    install_requires=['unidec', 'seaborn'],
+    include_package_data=True,
+    package_data={"baf2sql_c":["baf2sql_c.dll"]}
 )

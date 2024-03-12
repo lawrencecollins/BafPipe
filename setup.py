@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="deconvolawrence",
 
-    version="0.3",
+    version="0.3.1",
 
     author="Lawrence Collins",
     author_email="cm19ljc@leeds.ac.uk",
@@ -14,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/lawrencecollins/deconvolawrence",
-    packages=["deconvolawrence"],
+    packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -24,6 +24,6 @@ setuptools.setup(
     setup_requires=['wheel'],
     install_requires=['unidec', 'seaborn'],
 
-    include_package_data=True,
+    package_data={'':['*.dll']},
 
 )

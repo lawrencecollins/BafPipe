@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="deconvolawrence",
 
-    version="0.3.1",
+    version="0.3.2",
 
     author="Lawrence Collins",
     author_email="cm19ljc@leeds.ac.uk",

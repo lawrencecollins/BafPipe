@@ -497,7 +497,7 @@ class Meta2():
 
     def plot_spectra(self, export = True, combine = False, data = 'massdat',
                     window = [None, None], cmap='gray',title=None,show_titles=False,
-                    show_peaks=False, xlabel='Mass [Da]',c='black',
+                    show_peaks=False, xlabel='Mass (Da)',c='black',
                     lw=0.7,groupby=None
                      ):
         spectra = self.eng.data.spectra

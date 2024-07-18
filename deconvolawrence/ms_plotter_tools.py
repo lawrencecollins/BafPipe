@@ -8,7 +8,7 @@ import matplotlib
 import re
 import seaborn as sns
 
-matplotlib.rcParams['font.family'] = 'serif'
+matplotlib.rcParams['font.family'] = 'Arial'
 matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
@@ -165,7 +165,7 @@ def plot_spectra_separate(spectra, attr = 'massdat', xlabel = 'Mass [Da]',
 
 def plot_spectra_combined2(spectra, attr = 'massdat', title = "", show_titles = True,
                           cmap='viridis', show_peaks = True,window = [None, None],
-                          xlabel="Mass [Da]", show_all_peaks=False,label_peaks=True,
+                          xlabel="Mass (Da)", show_all_peaks=False,label_peaks=True,
                           legend=True,export=True,directory="",fmt='svg',figsize=(7,5),
                           findpeaks=False,alpha=0.4):
     fig, axs = plt.subplots(len(spectra), 1, sharex = True, dpi = 120, sharey=False,
@@ -211,7 +211,7 @@ def plot_spectra_combined2(spectra, attr = 'massdat', title = "", show_titles = 
 
 def plot_spectra_combined(spectra, attr = 'massdat', title = "", show_titles = True,
                           cmap='viridis', show_peaks = True,window = [None, None],
-                          xlabel="Mass [Da]", show_all_peaks=False,label_peaks=True, legend=True,
+                          xlabel="Mass (Da)", show_all_peaks=False,label_peaks=True, legend=True,
                           fade=True,xoffval = 7.5, yoffval = 20,export=True,directory="",fmt='svg',
                           *args, **kwargs):
 

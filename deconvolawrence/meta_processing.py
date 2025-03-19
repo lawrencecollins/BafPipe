@@ -57,7 +57,7 @@ def unzip_from_dir(directory):
         # os.remove(path)
 
 def filter_df(df, filter_by, column):
-    flt=df[column].str.contains(filter_by)
+    flt=df[column].str.contains(filter_by, na=False)
     return df[flt]
 
 def df_partial_str_merge(df1, df2, on):
@@ -157,7 +157,7 @@ class Meta2():
     def get_directory(self, param_table=None):
         if param_table is None:
             param_table=self.params
-        dr=filter_df(param_table, 'Directory', 'Parameter')
+        dr=filter_df(param_table, 'Directory', 'Parameter', )
         self.directory=dr.iloc[0, 1]
 
         return self.directory

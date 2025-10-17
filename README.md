@@ -1,11 +1,11 @@
-# deconvolawrence
+# BafPipe
 Automated deconvolution of mass spectra datasets using [UniDec](https://github.com/michaelmarty/UniDec).
 
 Cite Marty et al. Anal. Chem. 2015. DOI: 10.1021/acs.analchem.5b00140
 
-Automates the UniDec deconvolution algorithms for large Bruker mass spectra datasets and quantifies relative peak intensity. Converts Bruker .baf to numpy arrays using baf2sql. 
+Automates the UniDec deconvolution algorithms for large Bruker mass spectra datasets and quantifies relative peak intensity. Converts Bruker .baf to numpy arrays using baf2sql and then automates unidec to deconvolute protein mass spectra. 
 
-`pip install deconvolawrence`
+`pip install BafPipe`
 
 The software uses an input excel file containing deconvolution parameters, species identities/masses and data plotting parameters. 
 

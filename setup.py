@@ -6,14 +6,14 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="deconvolawrence",
 
-    version="0.3.2",
+    version="0.3.3",
 
     author="Lawrence Collins",
-    author_email="cm19ljc@leeds.ac.uk",
-    description="Automated deconvolution of mass spectra datasets",
+    author_email="chmlco@leeds.ac.uk",
+    description="Automated deconvolution of Bruker mass spectra datasets using UniDec",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/lawrencecollins/deconvolawrence",
+    url="https://github.com/lawrencecollins/BafPipe",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
